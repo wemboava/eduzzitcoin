@@ -7,7 +7,7 @@ import Login from "../pages/Login";
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Dashboard} />
-    <Route path="/repository" exact component={Login} />
+    <Route path="/login" exact component={Login} />
   </Switch>
 );
 
