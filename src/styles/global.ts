@@ -26,6 +26,7 @@ export default createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased !important;
+    background-color: #0E0E0E;
   }
 
   body, input, button {
@@ -46,5 +47,29 @@ export default createGlobalStyle`
 
   p, h1, h2 {
     text-align: start;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-animation: autofill 0s forwards;
+    animation: autofill 0s forwards;
+
+    @keyframes autofill {
+      100% {
+        background: #0E0E0E;
+        color: #ddd;
+        font-size: 15px;
+      }
+    }
+
+    @-webkit-keyframes autofill {
+      100% {
+        background: #0E0E0E;
+        color: #ddd;
+        font-size: 15px;
+      }
+    }
   }
 `;
