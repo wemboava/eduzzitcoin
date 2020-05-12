@@ -48,6 +48,8 @@ const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
+  api.defaults.headers.Authorization = `Bearer ${data.token}`;
+
   return (
     <AuthContext.Provider value={{ token: data.token, signIn, signOut }}>
       {children}

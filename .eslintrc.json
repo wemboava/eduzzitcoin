@@ -40,12 +40,7 @@
     "import/prefer-default-export": "off",
     "import/no-dynamic-require": "off",
     "global-require": "off",
-    "@typescript-eslint/explicit-function-return-type": [
-      "error",
-      {
-        "allowExpressions": true
-      }
-    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

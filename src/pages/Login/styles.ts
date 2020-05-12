@@ -4,6 +4,7 @@ import Background from '../../assets/images/bitcoin-bg.jpg';
 
 export const Container = styled.div`
   height: 100%;
+  background-color: #0e0e0e;
   @media (min-width: 768px) {
     background: url(${Background});
     background-size: cover;

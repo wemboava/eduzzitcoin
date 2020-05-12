@@ -26,11 +26,12 @@ export default createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased !important;
-    background-color: #0E0E0E;
+    font-family: 'Baloo 2', cursive;
+    background-color: #EEF4FB;
   }
 
   body, input, button {
-    font: 14px 'Lato', sans-serif;
+    font: 16px 'Baloo 2', cursive;
   }
 
   a {
