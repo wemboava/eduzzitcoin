@@ -1,11 +1,15 @@
 import React from 'react';
 import Extract from '../../components/extract';
-import { Container } from './styles';
+import Header from '../../components/common/header';
+import { Container, Content } from './styles';
 
 const Dashboard: React.FC = () => {
   return (
     <Container>
-      <Extract />
+      <Header />
+      <Content>
+        <Extract />
+      </Content>
     </Container>
   );
 };
