@@ -6,6 +6,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { ExtractState } from './ducks/extract/types';
 import { BalanceState } from './ducks/balance/types';
 import { BtcState } from './ducks/btc/types';
+import { HistoryState } from './ducks/history/types';
+import { VolumeState } from './ducks/volume/types';
 
 import rootReducer from './ducks/rootReducer';
 import rootSaga from './ducks/rootSaga';
@@ -14,6 +16,8 @@ export interface ApplicationState {
   extract: ExtractState;
   balance: BalanceState;
   btc: BtcState;
+  history: HistoryState;
+  volume: VolumeState;
 }
 
 const sagaMiddleware = createSagaMiddleware();

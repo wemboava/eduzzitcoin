@@ -64,10 +64,10 @@ export const Content = styled.div<LoginProps>`
         width: 200px;
         border: none;
         border-radius: 35px;
-        padding: 14px;
+        padding: 8px;
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         color: #fff;
-        font-size: 1.3em;
+        font-size: 1.4em;
         cursor: pointer;
         font-weight: bold;
         outline: none;

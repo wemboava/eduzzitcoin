@@ -6,6 +6,7 @@ import { IoLogoBitcoin } from 'react-icons/io';
 import { ApplicationState } from '../../../store';
 import { loadRequest } from '../../../store/ducks/balance/actions';
 import { loadRequest as loadBtcRequest } from '../../../store/ducks/btc/actions';
+import { loadRequest as loadVolumeRequest } from '../../../store/ducks/volume/actions';
 import { Balance } from '../../../store/ducks/balance/types';
 
 import { Container } from './styles';
@@ -16,12 +17,14 @@ const Header: React.FC = () => {
   useEffect(() => {
     dispatch(loadRequest());
     dispatch(loadBtcRequest());
+    dispatch(loadVolumeRequest());
   }, [dispatch]);
 
   const typedUseSelector: TypedUseSelectorHook<ApplicationState> = useSelector;
 
   const balanceData = typedUseSelector((state) => state.balance);
   const btcData = typedUseSelector((state) => state.btc);
+  const volumeData = typedUseSelector((state) => state.volume);
 
   console.log('balance =>', balanceData);
 
@@ -53,6 +56,15 @@ const Header: React.FC = () => {
             </span>
             <span>
               Purchase price <span>R${btcData.data.sell.toLocaleString()}</span>
+            </span>
+          </div>
+          <div className="col-two__btc-wrapper__volume">
+            <span>
+              Volume sold <span>R${volumeData.data.buy.toLocaleString()}</span>
+            </span>
+            <span>
+              Purchased volume{' '}
+              <span>R${volumeData.data.sell.toLocaleString()}</span>
             </span>
           </div>
         </div>

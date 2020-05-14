@@ -42,7 +42,7 @@ export default createGlobalStyle`
     list-style: none;
   }
 
-  button: {
+  button {
     cursor: pointer;
   }
 

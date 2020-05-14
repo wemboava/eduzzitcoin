@@ -73,6 +73,20 @@ const Container = styled.div`
           }
         }
       }
+      &__volume {
+        display: flex;
+        flex-direction: column;
+        margin-left: 40px;
+        & > span {
+          color: #000;
+          font-size: 0.9em;
+          font-weight: 500;
+          & > span {
+            font-weight: 300;
+            color: #8e9eb0;
+          }
+        }
+      }
     }
   }
 `;
