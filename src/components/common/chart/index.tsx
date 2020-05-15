@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
@@ -45,27 +45,22 @@ const Chart: React.FC<PropsData> = ({ data, dataTarget, chartColor }) => {
     }
   }
 
-  // deposit: '#4B68ED',
-  // investment: '#5ED8F7',
-  // liquidation: '#F69932',
-
   am4core.useTheme(am4themesMyTheme);
 
   useEffect(() => {
     const chart = am4core.create('chartdiv', am4charts.XYChart);
     chart.paddingRight = 20;
-    chart.data = data;
+    chart.data = data.reverse();
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis());
     dateAxis.baseInterval = {
       timeUnit: 'minute',
-      count: 1,
+      count: 10,
     };
 
     dateAxis.tooltipDateFormat = 'HH:mm, d MMMM';
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    // valueAxis.tooltip.disabled = true;
     valueAxis.title.text = 'Price R$';
 
     const series = chart.series.push(new am4charts.LineSeries());
@@ -76,16 +71,22 @@ const Chart: React.FC<PropsData> = ({ data, dataTarget, chartColor }) => {
 
     chart.cursor = new am4charts.XYCursor();
     chart.cursor.lineY.opacity = 0;
+    // chart.cursor.behavior = 'none';
 
     const scrollbarX = new am4charts.XYChartScrollbar();
     scrollbarX.series.push(series);
     chart.scrollbarX = scrollbarX;
 
+    // chart.scrollbarX.startGrip.disabled = true;
+    // chart.scrollbarX.endGrip.disabled = true;
+
     dateAxis.start = 0;
     dateAxis.keepSelection = true;
+
+    return () => chart.dispose();
   }, [data, dataTarget]);
 
   return <div id="chartdiv" style={{ width: '100%', height: '500px' }} />;
 };
 
-export default Chart;
+export default memo(Chart);
