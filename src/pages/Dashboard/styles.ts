@@ -15,8 +15,11 @@ export const Content = styled.div`
   justify-content: space-between;
   margin-top: 30px;
   .chart-wrapper {
+    height: fit-content;
     flex: 1;
     margin-right: 30px;
+    position: sticky;
+    top: 20px;
     strong {
       color: #8e9eb0;
       font-size: 1.1em;
@@ -38,18 +41,17 @@ export const Content = styled.div`
 
 export const Button = styled.button<ButtonProps>`
   color: ${(props) => (props.isActivity ? '#fff' : props.bgColor)};
-  background-color: ${(props) => (props.isActivity ? props.bgColor : '#fff')};
+  background-color: ${(props) =>
+    props.isActivity ? props.bgColor : 'transparent'};
   font-weight: bold;
   border: 1px solid ${(props) => props.bgColor};
-  border-radius: 15px;
+  border-radius: 12px;
   width: 200px;
   font-size: 1.1em;
   padding: 7px 20px;
   margin-right: 50px;
   transition: 0.3s ease-in-out;
-  box-shadow: 1px 1px 15px
-    ${(props) =>
-      props.isActivity ? opacify(0.1, props.bgColor) : 'transparent'};
+  box-shadow: 0px 5px 20px -5px ${(props) => (props.isActivity ? opacify(0.1, props.bgColor) : 'transparent')};
   &:hover {
     background-color: ${(props) => lighten(0.05, props.bgColor)};
     color: #fff;

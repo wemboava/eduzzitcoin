@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux';
 import { IoLogoBitcoin } from 'react-icons/io';
 
 import { ApplicationState } from '../../../store';
-import { loadRequest } from '../../../store/ducks/balance/actions';
+import {
+  loadRequest,
+  depositRequest,
+} from '../../../store/ducks/balance/actions';
 import { loadRequest as loadBtcRequest } from '../../../store/ducks/btc/actions';
 import { loadRequest as loadVolumeRequest } from '../../../store/ducks/volume/actions';
 import { Balance } from '../../../store/ducks/balance/types';
+import ModalTemplate from '../modalTemplate';
+import InputNumber from '../inputNumber';
 
-import { Container } from './styles';
+import { Container, Button, DepositModalContent } from './styles';
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
@@ -20,13 +25,18 @@ const Header: React.FC = () => {
     dispatch(loadVolumeRequest());
   }, [dispatch]);
 
+  const [openedDepositModal, setOpenedDepositModal] = useState<boolean>(true);
+  const [depositValue, setDepositValue] = useState<number>(0);
+
   const typedUseSelector: TypedUseSelectorHook<ApplicationState> = useSelector;
 
   const balanceData = typedUseSelector((state) => state.balance);
   const btcData = typedUseSelector((state) => state.btc);
   const volumeData = typedUseSelector((state) => state.volume);
 
-  console.log('balance =>', balanceData);
+  const handleDeposit = useCallback(() => {
+    dispatch(depositRequest(depositValue));
+  }, [dispatch, depositValue]);
 
   return (
     <Container>
@@ -35,8 +45,8 @@ const Header: React.FC = () => {
         <div className="col-one__value-wrapper">
           <span>R${balanceData.data.value?.toLocaleString()}</span>
         </div>
-        <div className="col-one__btc-wrapper">
-          <span>R${balanceData.data.value?.toLocaleString()}</span>
+        <div className="col-one__deposit-wrapper">
+          <Button onClick={() => setOpenedDepositModal(true)}>Deposit</Button>
         </div>
       </div>
 
@@ -69,6 +79,25 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
+      <ModalTemplate
+        isActivity={openedDepositModal}
+        toggleModal={() => setOpenedDepositModal(!openedDepositModal)}
+      >
+        <DepositModalContent>
+          <div className="modal-header">
+            <strong>Deposit</strong>
+            <p>Insire um valor para o depósito</p>
+          </div>
+          <InputNumber
+            name="deposit"
+            value={depositValue}
+            handleChange={setDepositValue}
+          />
+          <button type="button" onClick={handleDeposit}>
+            Confirm deposit
+          </button>
+        </DepositModalContent>
+      </ModalTemplate>
     </Container>
   );
 };

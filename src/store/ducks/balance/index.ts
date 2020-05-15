@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { BalanceState, BalanceTypes } from './types';
+import { BalanceState, BalanceTypes, DepositTypes } from './types';
 
 const INITIAL_STATE: BalanceState = {
   data: {
@@ -7,6 +7,7 @@ const INITIAL_STATE: BalanceState = {
   },
   error: false,
   loading: false,
+  depositLoading: false,
 };
 
 const reducer: Reducer<BalanceState> = (state = INITIAL_STATE, action) => {
@@ -27,6 +28,27 @@ const reducer: Reducer<BalanceState> = (state = INITIAL_STATE, action) => {
         error: true,
         data: {
           value: 0,
+        },
+      };
+
+    case DepositTypes.LOAD_REQUEST:
+      return { ...state, depositLoading: true };
+    case DepositTypes.LOAD_SUCCCES:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        depositLoading: false,
+        data: { value: action.payload.data },
+      };
+    case DepositTypes.LOAD_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: true,
+        depositLoading: false,
+        data: {
+          value: state.data.value,
         },
       };
     default:

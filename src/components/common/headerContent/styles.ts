@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { opacify, lighten } from 'polished';
 
 const Container = styled.div`
-  padding: 30px;
+  padding: 20px 30px 30px 30px;
   display: flex;
   .col-one {
     width: 350px;
@@ -48,7 +49,7 @@ const Container = styled.div`
       &__name {
         display: flex;
         flex-direction: column;
-        margin-right: 100px;
+        margin-right: 80px;
         & > strong {
           height: 25px;
           font-size: 1.25em;
@@ -91,4 +92,52 @@ const Container = styled.div`
   }
 `;
 
-export { Container };
+const Button = styled.button`
+  width: 150px;
+  color: #fff;
+  background-color: #f69932;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1em;
+  padding: 7px 20px;
+  margin-top: 20px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0px 5px 20px -5px ${opacify(0.1, '#f69932')};
+  &:hover {
+    background-color: ${lighten(0.05, '#f69932')};
+  }
+`;
+
+export const DepositModalContent = styled.div`
+  width: 400px;
+  height: 300px;
+
+  padding: 30px 20px;
+  & .modal-header {
+    margin-bottom: 40px;
+    & > strong {
+      color: #8e9eb0;
+      font-size: 1.75em;
+      font-weight: bold;
+    }
+  }
+  & button {
+    width: 100%;
+    color: #fff;
+    background-color: #4b68ed;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    padding: 10px 20px;
+    margin-top: 20px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 5px 20px -5px ${opacify(0.1, '#4B68ED')};
+    &:hover {
+      background-color: ${lighten(0.05, '#4B68ED')};
+    }
+  }
+`;
+
+export { Container, Button };

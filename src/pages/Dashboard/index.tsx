@@ -8,6 +8,7 @@ import { loadRequest } from '../../store/ducks/history/actions';
 import Extract from '../../components/extract';
 import Chart from '../../components/common/chart';
 import Header from '../../components/common/header';
+
 import { Container, Content, Button } from './styles';
 
 interface ChartConfigData {

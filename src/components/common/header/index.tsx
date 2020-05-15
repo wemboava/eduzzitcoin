@@ -19,7 +19,7 @@ const Header: React.FC = () => {
         <nav className="nav">
           <ul className="nav__options">
             <li className="nav__options__item">
-              <Link to="/login">Login</Link>
+              <Link to="/login">Logout</Link>
             </li>
           </ul>
         </nav>
