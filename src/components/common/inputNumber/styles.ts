@@ -24,6 +24,10 @@ export const Container = styled.div<ContainerProps>`
   transition: color 0.2s;
   transition: border-color 0.2s;
 
+  & > img {
+    width: 25px;
+  }
+
   ${(props) =>
     props.isFocused &&
     css`
@@ -42,7 +46,9 @@ export const Container = styled.div<ContainerProps>`
     background: transparent;
     border: 0;
     color: #000;
-
+    font-size: 20px;
+    padding-left: 8px;
+    padding-top: 2px;
     &::placeholder {
       color: #000;
     }

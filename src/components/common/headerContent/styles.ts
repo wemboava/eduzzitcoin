@@ -5,8 +5,9 @@ const Container = styled.div`
   padding: 20px 30px 30px 30px;
   display: flex;
   .col-one {
-    width: 350px;
+    width: 33.33%;
     border-right: 0.5px solid rgba(181, 176, 176, 0.5);
+    padding-right: 30px;
     strong {
       color: #8e9eb0;
       font-size: 0.9em;
@@ -15,12 +16,24 @@ const Container = styled.div`
 
     &__value-wrapper {
       font-weight: 700;
-      font-size: 2.2em;
+      display: flex;
+      flex-direction: column;
+      &__real {
+        font-size: 2.2em;
+      }
+
+      &__btc {
+        color: #8e9eb0;
+        font-size: 1.15em;
+        margin-top: -10px;
+      }
     }
   }
 
   .col-two {
-    padding-left: 30px;
+    width: 33.33%;
+    padding: 0 30px;
+    border-right: 0.5px solid rgba(181, 176, 176, 0.5);
     & > strong {
       color: #8e9eb0;
       font-size: 0.9em;
@@ -29,36 +42,40 @@ const Container = styled.div`
     &__btc-wrapper {
       margin-top: 10px;
       display: flex;
-      align-items: center;
-      &__icon {
-        width: 40px;
-        height: 40px;
+      flex-direction: column;
+      &__header {
+        display: flex;
+        margin-bottom: 6px;
+        &__icon {
+          width: 40px;
+          height: 40px;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 10px;
-        background: rgba(246, 153, 50, 0.21);
-        border-radius: 8px;
-        color: #f69932;
-        box-shadow: 0px 1px 6px 0px rgba(113, 113, 113, 0.2);
-        & > svg {
-          transform: rotate(10deg);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 10px;
+          background: rgba(246, 153, 50, 0.21);
+          border-radius: 8px;
+          color: #f69932;
+          box-shadow: 0px 1px 6px 0px rgba(113, 113, 113, 0.2);
+          & > svg {
+            transform: rotate(10deg);
+          }
         }
-      }
-      &__name {
-        display: flex;
-        flex-direction: column;
-        margin-right: 80px;
-        & > strong {
-          height: 25px;
-          font-size: 1.25em;
-          font-weight: bold;
-        }
-        & > span {
-          color: #8e9eb0;
-          font-size: 0.8em;
-          font-weight: 300;
+        &__name {
+          display: flex;
+          flex-direction: column;
+          margin-right: 80px;
+          & > strong {
+            height: 25px;
+            font-size: 1.25em;
+            font-weight: bold;
+          }
+          & > span {
+            color: #8e9eb0;
+            font-size: 0.8em;
+            font-weight: 300;
+          }
         }
       }
       &__prices {
@@ -77,7 +94,6 @@ const Container = styled.div`
       &__volume {
         display: flex;
         flex-direction: column;
-        margin-left: 40px;
         & > span {
           color: #000;
           font-size: 0.9em;
@@ -90,10 +106,30 @@ const Container = styled.div`
       }
     }
   }
+  .col-three {
+    width: 33.33%;
+    margin-left: 30px;
+    & > strong {
+      color: #8e9eb0;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+    &__content {
+      margin-top: 15px;
+      &__actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        & button + button {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
 `;
 
 const Button = styled.button`
-  width: 150px;
+  width: 220px;
   color: #fff;
   background-color: #f69932;
   font-weight: bold;

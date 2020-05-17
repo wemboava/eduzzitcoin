@@ -11,7 +11,7 @@ const color = {
 };
 
 export const Container = styled.li<StyleProps>`
-  width: 300px;
+  width: 340px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -38,9 +38,13 @@ export const Container = styled.li<StyleProps>`
       display: flex;
       justify-content: center;
       flex-direction: column;
+      text-transform: capitalize;
+
       & span {
         font-weight: 100;
         font-size: 0.8em;
+        margin-top: -3px;
+        color: #8e9eb0;
       }
     }
   }

@@ -51,22 +51,24 @@ const Dashboard: React.FC = () => {
       <Header />
       <Content>
         <div className="chart-wrapper">
-          <strong>Historic</strong>
-          <div className="chart-wrapper__actions">
-            <Button
-              onClick={() => setHistoricType('buy' as ValueData)}
-              bgColor="#4B68ED"
-              isActivity={historicType === 'buy'}
-            >
-              Buy
-            </Button>
-            <Button
-              onClick={() => setHistoricType('sell' as ValueData)}
-              bgColor="#5ED8F7"
-              isActivity={historicType === 'sell'}
-            >
-              Sell
-            </Button>
+          <div className="chart-wrapper__header">
+            <strong>Historic</strong>
+            <div className="chart-wrapper__header__actions">
+              <Button
+                onClick={() => setHistoricType('buy' as ValueData)}
+                bgColor="#4B68ED"
+                isActivity={historicType === 'buy'}
+              >
+                Purchase History
+              </Button>
+              <Button
+                onClick={() => setHistoricType('sell' as ValueData)}
+                bgColor="#5ED8F7"
+                isActivity={historicType === 'sell'}
+              >
+                Sale History
+              </Button>
+            </div>
           </div>
           <Chart
             chartColor={

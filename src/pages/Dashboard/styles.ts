@@ -20,20 +20,28 @@ export const Content = styled.div`
     margin-right: 30px;
     position: sticky;
     top: 20px;
-    strong {
-      color: #8e9eb0;
-      font-size: 1.1em;
-      font-weight: bold;
-    }
-    &__actions {
+    &__header {
       display: flex;
-      margin-top: 15px;
+      justify-content: space-between;
+      strong {
+        color: #8e9eb0;
+        font-size: 1.3em;
+        font-weight: bold;
+      }
+      &__actions {
+        display: flex;
+        justify-content: flex-end;
+      }
     }
   }
   .extract-wrapper {
+    min-width: 350px;
     strong {
+      font-weight: bold;
+    }
+    & > strong {
       color: #8e9eb0;
-      font-size: 1.1em;
+      font-size: 1.3em;
       font-weight: bold;
     }
   }
@@ -49,7 +57,7 @@ export const Button = styled.button<ButtonProps>`
   width: 200px;
   font-size: 1.1em;
   padding: 7px 20px;
-  margin-right: 50px;
+  margin-right: 20px;
   transition: 0.3s ease-in-out;
   box-shadow: 0px 5px 20px -5px ${(props) => (props.isActivity ? opacify(0.1, props.bgColor) : 'transparent')};
   &:hover {

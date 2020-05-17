@@ -21,7 +21,12 @@ const ExtractItem: React.FC<Extract> = ({ type, value, createdAt }) => {
           <span>{moment(createdAt).format('DD MMM, YYYY [ás] HH:m')}</span>
         </div>
       </div>
-      <span className="value">{value.toLocaleString()}</span>
+      <span className="value">
+        {value.toLocaleString('pt-br', {
+          style: 'currency',
+          currency: 'BRL',
+        })}
+      </span>
     </Container>
   );
 };

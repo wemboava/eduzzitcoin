@@ -5,15 +5,16 @@ import React, {
   useCallback,
 } from 'react';
 import { IconBaseProps } from 'react-icons';
-import { FiAlertCircle } from 'react-icons/fi';
+
+import brlIcon from '../../../assets/images/brl.png';
 
 import { Container, Error } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   icon?: React.ComponentType<IconBaseProps>;
-  value: number;
-  handleChange(value: number): void;
+  value: string;
+  handleChange(value: string): void;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -37,16 +38,27 @@ const Input: React.FC<InputProps> = ({
     setIsFilled(!!inputRef.current?.value);
   }, []);
 
+  const BRL = (int: string) => {
+    const k = int.replace(/[\D]+/g, '');
+    let tmp = `${k}`;
+    tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
+    if (tmp.length > 6) tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
+
+    console.log('tmp', tmp);
+    return tmp;
+  };
+
   return (
     <Container isFilled={isFilled} isFocused={isFocused}>
-      {Icon && <Icon />}
+      <img src={brlIcon} alt="BRL icon" />
       <input
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         ref={inputRef}
         name={name}
         value={value}
-        onChange={(e) => handleChange(parseInt(e.target.value, 10))}
+        onChange={(e) => handleChange(BRL(e.target.value.toString()))}
+        placeholder="00,00"
       />
 
       {/* {error && (
