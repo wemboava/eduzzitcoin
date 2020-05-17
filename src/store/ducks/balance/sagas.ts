@@ -1,4 +1,7 @@
-import { call, put } from 'redux-saga/effects';
+import { call, put, select } from 'redux-saga/effects';
+import { uuid } from 'uuidv4';
+
+import { ApplicationState } from '../..';
 
 import api from '../../../services/api';
 import {
@@ -8,6 +11,8 @@ import {
   depositSuccess,
   depositFailure,
 } from './actions';
+
+import { extractLoadSuccess } from '../extract/actions';
 
 // Load balance
 
@@ -39,6 +44,22 @@ export function* deposit(action: ReturnType<typeof depositRequest>) {
     });
     const { data } = response;
 
+    const extract = yield select(
+      (state: ApplicationState) => state.extract.data,
+    );
+
+    const id = uuid();
+
+    const newDeposit = {
+      createdAt: new Date().toString(),
+      id,
+      type: 'deposit',
+      value: action.payload,
+    };
+
+    extract.unshift(newDeposit);
+
+    yield put(extractLoadSuccess(extract));
     yield put(depositSuccess(data.balance));
   } catch (err) {
     yield put(depositFailure());

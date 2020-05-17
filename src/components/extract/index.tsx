@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux';
+import { useTransition } from 'react-spring';
 
 import ExtractItem from './extractItem';
 import { ApplicationState } from '../../store';
-import { loadRequest } from '../../store/ducks/extract/actions';
+import { extractLoadRequest } from '../../store/ducks/extract/actions';
 import { Extract } from '../../store/ducks/extract/types';
 import { Container, List } from './styles';
 
@@ -11,22 +12,31 @@ const ExtractList: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRequest());
+    dispatch(extractLoadRequest());
   }, [dispatch]);
 
   const typedUseSelector: TypedUseSelectorHook<ApplicationState> = useSelector;
 
-  const extractData = typedUseSelector((state) => state.extract);
+  const { data } = typedUseSelector((state) => state.extract);
+
+  const messagesWithTransitions = useTransition(data, (extract) => extract.id, {
+    initial: { right: '0%', opacity: 0 },
+    from: { right: '-100%', opacity: 0 },
+    enter: { right: '0%', opacity: 1 },
+    leave: { right: '-100%', opacity: 0 },
+  });
 
   return (
     <Container>
       <List>
-        {extractData?.data.map((info: Extract) => (
+        {messagesWithTransitions.map(({ item, key, props }) => (
           <ExtractItem
-            key={info.id}
-            type={info.type}
-            value={info.value}
-            createdAt={info.createdAt}
+            key={key}
+            id={item.id}
+            style={props}
+            type={item.type}
+            value={item.value}
+            createdAt={item.createdAt}
           />
         ))}
       </List>

@@ -1,10 +1,32 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { opacify, lighten } from 'polished';
 
 interface ButtonProps {
   bgColor: string;
   isActivity: boolean;
 }
+
+const appearFromLeft = keyframes`
+  from{
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+`;
+
+const appearFromRight = keyframes`
+  from{
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+`;
 
 export const Container = styled.section``;
 
@@ -20,6 +42,7 @@ export const Content = styled.div`
     margin-right: 30px;
     position: sticky;
     top: 20px;
+    animation: ${appearFromLeft} 1s;
     &__header {
       display: flex;
       justify-content: space-between;
@@ -36,6 +59,7 @@ export const Content = styled.div`
   }
   .extract-wrapper {
     min-width: 350px;
+    animation: ${appearFromRight} 1s;
     strong {
       font-weight: bold;
     }

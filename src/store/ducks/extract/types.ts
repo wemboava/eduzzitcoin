@@ -11,10 +11,11 @@ export enum ExtractTypes {
  * Data types
  */
 export interface Extract {
-  id?: string;
+  id: string;
   type: 'deposit' | 'investment' | 'liquidation';
   value: number;
   createdAt?: string;
+  style?: object;
 }
 
 /**

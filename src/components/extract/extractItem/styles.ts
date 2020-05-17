@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { animated } from 'react-spring';
 
 interface StyleProps {
   type: 'deposit' | 'investment' | 'liquidation';
@@ -10,13 +11,14 @@ const color = {
   liquidation: '#F69932',
 };
 
-export const Container = styled.li<StyleProps>`
+export const Container = styled(animated.div)<StyleProps>`
   width: 340px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: 'Baloo 2', cursive;
-  & + li {
+  position: relative;
+  & + div {
     margin-top: 15px;
   }
   .wrapper {

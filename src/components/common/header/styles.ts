@@ -1,4 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const appearFromTop = keyframes`
+  from{
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+`;
 
 const HeaderStyles = styled.div`
   width: 95%;
@@ -6,6 +17,7 @@ const HeaderStyles = styled.div`
   background-color: #fff;
   border-radius: 0 0 30px 30px;
   box-shadow: 0px 0px 14px 0px rgba(74, 82, 93, 0.1);
+  animation: ${appearFromTop} 1s;
 
   header {
     height: 60px;

@@ -70,17 +70,19 @@ const Dashboard: React.FC = () => {
               </Button>
             </div>
           </div>
-          <Chart
-            chartColor={
-              chartConfig?.find((data) => data.targetValue === historicType)
-                ?.color as string
-            }
-            dataTarget={
-              chartConfig?.find((data) => data.targetValue === historicType)
-                ?.targetValue as string
-            }
-            data={historytData.data}
-          />
+          <div className="chart-wrapper__chart">
+            <Chart
+              chartColor={
+                chartConfig?.find((data) => data.targetValue === historicType)
+                  ?.color as string
+              }
+              dataTarget={
+                chartConfig?.find((data) => data.targetValue === historicType)
+                  ?.targetValue as string
+              }
+              data={historytData.data}
+            />
+          </div>
         </div>
         <div className="extract-wrapper">
           <strong>Transactions</strong>
