@@ -31,11 +31,15 @@ const appearFromRight = keyframes`
 export const Container = styled.section``;
 
 export const Content = styled.div`
-  max-width: 1124px;
+  max-width: 1224px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
+  padding: 0 20px;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
   .chart-wrapper {
     height: fit-content;
     flex: 1;
@@ -43,6 +47,10 @@ export const Content = styled.div`
     position: sticky;
     top: 20px;
     animation: ${appearFromLeft} 1s;
+    @media (max-width: 900px) {
+      position: initial;
+      margin-right: 0;
+    }
     &__header {
       display: flex;
       justify-content: space-between;
@@ -51,15 +59,44 @@ export const Content = styled.div`
         font-size: 1.3em;
         font-weight: bold;
       }
+      @media (max-width: 900px) {
+        flex-direction: column;
+      }
       &__actions {
         display: flex;
         justify-content: flex-end;
+        & button {
+          @media (max-width: 900px) {
+            width: 100%;
+            margin-right: 0;
+          }
+        }
+        & button + button {
+          @media (max-width: 900px) {
+            width: 100%;
+            margin-left: 0;
+            margin-top: 10px;
+          }
+        }
+        @media (max-width: 900px) {
+          flex-direction: column;
+        }
+      }
+    }
+    &__chart {
+      @media (max-width: 900px) {
+        margin: 0 -15px;
       }
     }
   }
   .extract-wrapper {
     min-width: 350px;
     animation: ${appearFromRight} 1s;
+    @media (max-width: 900px) {
+      min-width: auto;
+      max-width: 100%;
+      margin-top: 20px;
+    }
     strong {
       font-weight: bold;
     }

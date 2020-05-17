@@ -24,10 +24,8 @@ const HeaderStyles = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 60px;
-    @media (min-width: 768px) {
-      padding: 0 30px;
-    }
+    padding: 0 30px;
+
     .logo-wrapper {
       display: flex;
       justify-content: center;

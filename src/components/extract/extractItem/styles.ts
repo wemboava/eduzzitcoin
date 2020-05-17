@@ -13,11 +13,13 @@ const color = {
 
 export const Container = styled(animated.div)<StyleProps>`
   width: 340px;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: 'Baloo 2', cursive;
   position: relative;
+
   & + div {
     margin-top: 15px;
   }
@@ -53,5 +55,8 @@ export const Container = styled(animated.div)<StyleProps>`
   .value {
     font-size: 1.5em;
     color: ${(props) => color[props.type]};
+    @media (max-width: 900px) {
+      font-size: 1.3em;
+    }
   }
 `;

@@ -22,6 +22,7 @@ const Modal = styled.div<StylesProps>`
 `;
 
 const ModalContent = styled.div`
+  max-width: 96%;
   background-color: #fff;
   box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.14);
   position: relative;
@@ -31,6 +32,7 @@ const ModalContent = styled.div`
   padding: 10px;
   border-radius: 20px;
   border: 0.5px solid rgb(118, 118, 118, 0.5);
+
   .close-button {
     width: 100%;
     height: 0;

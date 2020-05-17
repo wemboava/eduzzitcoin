@@ -4,10 +4,19 @@ import { opacify, lighten } from 'polished';
 const Container = styled.div`
   padding: 20px 30px 30px 30px;
   display: flex;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    padding: 20px 20px 30px 20px;
+  }
   .col-one {
     width: 33.33%;
     border-right: 0.5px solid rgba(181, 176, 176, 0.5);
     padding-right: 30px;
+    @media (max-width: 900px) {
+      width: 100%;
+      border-right: none;
+      padding: 0;
+    }
     strong {
       color: #8e9eb0;
       font-size: 0.9em;
@@ -34,6 +43,12 @@ const Container = styled.div`
     width: 33.33%;
     padding: 0 30px;
     border-right: 0.5px solid rgba(181, 176, 176, 0.5);
+    @media (max-width: 900px) {
+      width: 100%;
+      border-right: none;
+      padding: 0;
+      margin-top: 20px;
+    }
     & > strong {
       color: #8e9eb0;
       font-size: 0.9em;
@@ -109,6 +124,11 @@ const Container = styled.div`
   .col-three {
     width: 33.33%;
     margin-left: 30px;
+    @media (max-width: 900px) {
+      width: 100%;
+      margin-left: 0px;
+      margin-top: 20px;
+    }
     & > strong {
       color: #8e9eb0;
       font-size: 0.9em;
@@ -120,8 +140,21 @@ const Container = styled.div`
         display: flex;
         justify-content: space-between;
         margin-top: 15px;
+        & button {
+          @media (max-width: 900px) {
+            width: 100%;
+          }
+        }
         & button + button {
           margin-left: 20px;
+          @media (max-width: 900px) {
+            width: 100%;
+            margin-left: 0;
+            margin-top: 10px;
+          }
+        }
+        @media (max-width: 900px) {
+          flex-direction: column;
         }
       }
     }
@@ -140,6 +173,10 @@ const Button = styled.button`
   margin-top: 20px;
   transition: 0.3s ease-in-out;
   box-shadow: 0px 5px 20px -5px ${opacify(0.1, '#f69932')};
+  @media (max-width: 900px) {
+    width: 100%;
+    margin-top: 10px;
+  }
   &:hover {
     background-color: ${lighten(0.05, '#f69932')};
   }
@@ -147,11 +184,15 @@ const Button = styled.button`
 
 export const DepositModalContent = styled.div`
   width: 400px;
-  height: 300px;
+  height: 280px;
+  max-width: 100%;
 
   padding: 30px 20px;
+  @media (max-width: 900px) {
+    padding: 20px 15px;
+  }
   & .modal-header {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     & > strong {
       color: #8e9eb0;
       font-size: 1.75em;
