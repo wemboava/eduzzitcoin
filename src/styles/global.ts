@@ -28,6 +28,7 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased !important;
     font-family: 'Baloo 2', cursive;
     background-color: #EEF4FB;
+    overflow-x: hidden;
   }
 
   body, input, button {
