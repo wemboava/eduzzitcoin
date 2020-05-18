@@ -1,6 +1,4 @@
-## Available Scripts
-
-Online [DEMO](https://musing-nightingale-e94fe0.netlify.app/):
+## Online [DEMO](https://musing-nightingale-e94fe0.netlify.app/):
 
 
 ## Available Scripts
