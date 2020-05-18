@@ -48,6 +48,10 @@ const HeaderStyles = styled.div`
           & > a {
             color: #a7a7a7;
             font-weight: 700;
+            transition: 0.3s ease;
+            &:hover {
+              color: #4b68ed;
+            }
           }
         }
       }

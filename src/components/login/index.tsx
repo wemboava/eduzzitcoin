@@ -27,27 +27,6 @@ interface SignInFormData {
 }
 
 const Login: React.FC<LoginPropsData> = ({ showSession }) => {
-  const handleSubmit2 = useCallback(() => {
-    // this.props.handleLoader();
-    // AuthService.login(data)
-    //   .then((response) => {
-    //     console.log('client_token', response.data.token);
-    //     SessionService.setCookie('client_token', {
-    //       token: response.data.token,
-    //     });
-    //     setTimeout(() => {
-    //       // this.props.handleLoader();
-    //       // this.props.history.push('/dashboard');
-    //     }, 1500);
-    //   })
-    //   .catch((error) => {
-    //     setTimeout(() => {
-    //       // this.props.handleLoader();
-    //     }, 1500);
-    //   });
-    console.log('Loginnnn');
-  }, []);
-
   const { signIn } = useAuth();
   const { addToast } = useToast();
   const history = useHistory();
@@ -64,9 +43,7 @@ const Login: React.FC<LoginPropsData> = ({ showSession }) => {
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           console.log('YUP error', err);
-          // const errors = getValidationErrors(err);
 
-          // formRef.current?.setErrors(errors);
           return;
         }
 
@@ -118,11 +95,5 @@ const Login: React.FC<LoginPropsData> = ({ showSession }) => {
     </Content>
   );
 };
-
-//   render() {
-//     const { showSession, handleShow } = this.props;
-
-//   }
-// }
 
 export default Login;

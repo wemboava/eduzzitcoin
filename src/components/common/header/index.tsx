@@ -2,12 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import HeaderContent from '../headerContent';
+import { useAuth } from '../../../hooks/auth';
 
 import { HeaderStyles } from './styles';
 
 import Logo from '../../../assets/images/bitcoin-logo.png';
 
 const Header: React.FC = () => {
+  const { signOut } = useAuth();
+
   return (
     <HeaderStyles>
       <header>
@@ -19,7 +22,9 @@ const Header: React.FC = () => {
         <nav className="nav">
           <ul className="nav__options">
             <li className="nav__options__item">
-              <Link to="/login">Logout</Link>
+              <a href="/login" onClick={signOut}>
+                Logout
+              </a>
             </li>
           </ul>
         </nav>

@@ -4,6 +4,7 @@ import { opacify, lighten } from 'polished';
 interface ButtonProps {
   bgColor: string;
   isActivity: boolean;
+  disabled: boolean;
 }
 
 export const Button = styled.button<ButtonProps>`
@@ -21,5 +22,12 @@ export const Button = styled.button<ButtonProps>`
   &:hover {
     background-color: ${(props) => lighten(0.05, props.bgColor)};
     color: #fff;
+  }
+  &[disabled] {
+    color: #000;
+    background-color: #ddd;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    cursor: not-allowed;
   }
 `;

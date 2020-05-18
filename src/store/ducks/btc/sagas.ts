@@ -5,10 +5,8 @@ import {
   loadSuccess,
   loadFailure,
   purchaseRequest,
-  purchaseSuccess,
   purchaseFailure,
   sellRequest,
-  sellSuccess,
   sellFailure,
   btcBalanceSuccess,
   btcBalanceFailure,
@@ -17,6 +15,7 @@ import {
 import { loadSuccess as loadBalance } from '../balance/actions';
 
 import { extractLoadSuccess } from '../extract/actions';
+import { openSuccessModal } from '../successModal/actions';
 
 // btcBalance
 
@@ -70,8 +69,21 @@ export function* purchaseBtc(action: ReturnType<typeof purchaseRequest>) {
     const extractResponse = yield call(api.get, '/extract');
 
     yield put(extractLoadSuccess(extractResponse.data));
+    yield put(
+      openSuccessModal({
+        opened: true,
+        message: 'Your purchase was successful!',
+      }),
+    );
   } catch (err) {
     yield put(purchaseFailure());
+    yield put(
+      openSuccessModal({
+        opened: true,
+        message: 'We had a problem, try again!',
+        isError: true,
+      }),
+    );
   }
 }
 
@@ -79,7 +91,7 @@ export function* purchaseBtc(action: ReturnType<typeof purchaseRequest>) {
 
 export function* sellBtc(action: ReturnType<typeof sellRequest>) {
   try {
-    const response = yield call(api.post, '/btc/sell', {
+    yield call(api.post, '/btc/sell', {
       amount: action.payload,
     });
 
@@ -96,7 +108,21 @@ export function* sellBtc(action: ReturnType<typeof sellRequest>) {
 
     const extractResponse = yield call(api.get, '/extract');
     yield put(extractLoadSuccess(extractResponse.data));
+
+    yield put(
+      openSuccessModal({
+        opened: true,
+        message: 'Your sell was successful!',
+      }),
+    );
   } catch (err) {
     yield put(sellFailure());
+    yield put(
+      openSuccessModal({
+        opened: true,
+        message: 'We had a problem, try again!',
+        isError: true,
+      }),
+    );
   }
 }

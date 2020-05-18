@@ -20,7 +20,7 @@ const ExtractList: React.FC = () => {
   const { data } = typedUseSelector((state) => state.extract);
 
   const messagesWithTransitions = useTransition(data, (extract) => extract.id, {
-    initial: { right: '0%', opacity: 0 },
+    initial: { right: '0%', opacity: 1 },
     from: { right: '-100%', opacity: 0 },
     enter: { right: '0%', opacity: 1 },
     leave: { right: '-100%', opacity: 0 },

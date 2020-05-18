@@ -134,30 +134,6 @@ const Container = styled.div`
       font-size: 0.9em;
       font-weight: bold;
     }
-    &__content {
-      margin-top: 15px;
-      &__actions {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
-        & button {
-          @media (max-width: 900px) {
-            width: 100%;
-          }
-        }
-        & button + button {
-          margin-left: 20px;
-          @media (max-width: 900px) {
-            width: 100%;
-            margin-left: 0;
-            margin-top: 10px;
-          }
-        }
-        @media (max-width: 900px) {
-          flex-direction: column;
-        }
-      }
-    }
   }
 `;
 

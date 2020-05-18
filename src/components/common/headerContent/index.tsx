@@ -9,8 +9,6 @@ import {
 } from '../../../store/ducks/balance/actions';
 
 import {
-  purchaseRequest,
-  sellRequest,
   btcBalanceRequest,
   loadRequest as loadBtcRequest,
 } from '../../../store/ducks/btc/actions';
@@ -19,7 +17,7 @@ import { loadRequest as loadVolumeRequest } from '../../../store/ducks/volume/ac
 
 import ModalTemplate from '../modalTemplate';
 import InputNumber from '../inputNumber';
-import ButtonDefault from '../buttonDefault';
+import BuyAndSell from '../../buyAndSell';
 
 import { Container, Button, DepositModalContent } from './styles';
 
@@ -35,7 +33,6 @@ const Header: React.FC = () => {
 
   const [openedDepositModal, setOpenedDepositModal] = useState<boolean>(false);
   const [depositValue, setDepositValue] = useState<string>('');
-  const [buyAndSellValue, setBuyAndSellValue] = useState<string>('');
 
   const typedUseSelector: TypedUseSelectorHook<ApplicationState> = useSelector;
 
@@ -50,17 +47,9 @@ const Header: React.FC = () => {
 
   const handleDeposit = useCallback(() => {
     dispatch(depositRequest(formatData(depositValue)));
-
+    setDepositValue('');
     setOpenedDepositModal(false);
   }, [dispatch, depositValue, formatData, setOpenedDepositModal]);
-
-  const handlePurchase = useCallback(() => {
-    dispatch(purchaseRequest(formatData(buyAndSellValue)));
-  }, [dispatch, buyAndSellValue, formatData]);
-
-  const handleSell = useCallback(() => {
-    dispatch(sellRequest(formatData(buyAndSellValue)));
-  }, [dispatch, buyAndSellValue, formatData]);
 
   return (
     <Container>
@@ -138,31 +127,8 @@ const Header: React.FC = () => {
       </div>
 
       <div className="col-three">
-        <strong>COMPRA & VENDA</strong>
-        <div className="col-three__content">
-          <InputNumber
-            name="buyAndSell"
-            value={buyAndSellValue}
-            handleChange={setBuyAndSellValue}
-          />
-          <div className="col-three__content__actions">
-            <ButtonDefault
-              handleClick={handlePurchase}
-              bgColor="#4B68ED"
-              isActivity
-            >
-              Exchange Buy
-            </ButtonDefault>
-
-            <ButtonDefault
-              handleClick={handleSell}
-              bgColor="#5ED8F7"
-              isActivity
-            >
-              Exchange Sell
-            </ButtonDefault>
-          </div>
-        </div>
+        <strong>BUY & SELL</strong>
+        <BuyAndSell />
       </div>
 
       <ModalTemplate
