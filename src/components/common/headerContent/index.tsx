@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux';
 import { IoLogoBitcoin } from 'react-icons/io';
 
@@ -17,8 +16,6 @@ import {
 } from '../../../store/ducks/btc/actions';
 
 import { loadRequest as loadVolumeRequest } from '../../../store/ducks/volume/actions';
-
-import { Balance } from '../../../store/ducks/balance/types';
 
 import ModalTemplate from '../modalTemplate';
 import InputNumber from '../inputNumber';
@@ -53,7 +50,9 @@ const Header: React.FC = () => {
 
   const handleDeposit = useCallback(() => {
     dispatch(depositRequest(formatData(depositValue)));
-  }, [dispatch, depositValue, formatData]);
+
+    setOpenedDepositModal(false);
+  }, [dispatch, depositValue, formatData, setOpenedDepositModal]);
 
   const handlePurchase = useCallback(() => {
     dispatch(purchaseRequest(formatData(buyAndSellValue)));

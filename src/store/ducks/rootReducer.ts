@@ -5,6 +5,7 @@ import balance from './balance';
 import btc from './btc';
 import history from './history';
 import volume from './volume';
+import successModal from './successModal';
 
 export default combineReducers({
   extract,
@@ -12,4 +13,5 @@ export default combineReducers({
   btc,
   history,
   volume,
+  successModal,
 });

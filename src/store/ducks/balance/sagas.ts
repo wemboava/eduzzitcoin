@@ -13,6 +13,7 @@ import {
 } from './actions';
 
 import { extractLoadSuccess } from '../extract/actions';
+import { openSuccessModal } from '../successModal/actions';
 
 // Load balance
 
@@ -61,7 +62,20 @@ export function* deposit(action: ReturnType<typeof depositRequest>) {
 
     yield put(extractLoadSuccess(extract));
     yield put(depositSuccess(data.balance));
+    yield put(
+      openSuccessModal({
+        opened: true,
+        message: 'Your deposit was successful!',
+      }),
+    );
   } catch (err) {
     yield put(depositFailure());
+    yield put(
+      openSuccessModal({
+        opened: true,
+        message: 'We had a problem, try again!',
+        isError: true,
+      }),
+    );
   }
 }
