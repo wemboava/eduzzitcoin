@@ -1,29 +1,52 @@
 ## Online [DEMO](https://musing-nightingale-e94fe0.netlify.app/):
 
 
-## Available Scripts
+## Passos para a instalação
 
-In the project directory, you can run:
+Clone o projeto:
+### `git clone https://github.com/wemboava/eduzzitcoin.git`
 
+Acesse a pasta do projeto e instale as dependencias
+### `yarn`
+
+Inicie o projeto no modo desenvolvimento
 ### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Especificação do Sistema
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### 1) Contas
 
-### `yarn test`
+O sistema deve permitir cadastro (nome, email e senha) e login com token JWT
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### 2) Dashboard
 
-### `yarn build`
+- Deve exibir o saldo disponível em reais na conta do cliente
+- Cotação atual do bitcoin, compra e venda
+- Volume: total de bitcoins comprados e vendidos no dia corrente.
+- Histórico: Deve exibir um gráfico o histórico de valor de compra/venda do bitcoin que retorne o valor com frequência de 10 minutos (8:00, 8:10, 8:20, ...) das últimas 24 horas.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 3) Depósitos
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+O cliente deve poder fazer depósitos de valores em reais na plataforma.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### 4) Compra
+
+O Cliente deve poder fazer compras de bitcoins usando seu saldo disponível na conta. Deve ser exibido um preview com a estimativa antes da confirmação da compra.
+
+#### 5) Venda
+
+O Cliente poderá vender seus bitcoins com o valor em reais.
+
+#### 6) Extrato
+
+Deverá ser possível listar os depósitos, compras e resgates, com suas respectivas datas e cotações para o cliente ter transparência do que foi feito nos últimos 90 dias ou por intervalo customizado.
+
+## Tecnologias utilizadas
+- ReactJs
+- Typescript
+- styled-components
+- Redux
+- Redux-saga
+- React-router
+- Amcharts
+- React-spring
