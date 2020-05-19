@@ -36,13 +36,19 @@ export const Content = styled.div<RegisterProps>`
     justify-content: center;
     align-items: center;
     img {
-      width: 90px;
+      width: 80px;
       margin-left: -20px;
+      @media (min-width: 768px) {
+        width: 90px;
+      }
     }
     span {
       font-family: 'Ubuntu', sans-serif;
-      font-size: 48px;
+      font-size: 40px;
       color: #1b1b1b;
+      @media (min-width: 768px) {
+        font-size: 48px;
+      }
     }
   }
 

@@ -29,6 +29,7 @@ const InputDefault: React.FC<InputDefaultProps> = ({
           name={name}
           className="input"
           autoComplete="off"
+          autoCapitalize="off"
         />
         <label htmlFor={name}>{label}</label>
       </div>
