@@ -1,22 +1,21 @@
 import React, { useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Form } from '@rocketseat/unform';
 import api from '../../services/api';
 
 import { useToast } from '../../hooks/toast';
-// import UserService from '../../services/user';
 import { InputDefault } from '../common';
 import { Content } from './styles';
 
 import Logo from '../../assets/images/bitcoin-logo.png';
 
 const schema = Yup.object().shape({
-  name: Yup.string().required('O nome é obrigatório'),
+  name: Yup.string().required('Name is required'),
   email: Yup.string()
-    .email('Insira um email válido!')
-    .required('O email é obrigatório'),
-  password: Yup.string().required('A senha é obrigatória'),
+    .email('Enter a valid email!')
+    .required('Email is require'),
+  password: Yup.string().required('Password is require'),
 });
 
 interface RegisterPropsData {
@@ -36,19 +35,18 @@ const SignUp: React.FC<RegisterPropsData> = ({ showSession }) => {
 
         addToast({
           type: 'success',
-          title: 'Cadastro realizado!',
-          description: 'Você já pode fazer o login no Eduzzticoin!',
+          title: 'Registration completed!',
+          description: 'You can now login to Eduzzticoin!',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
-          console.log('yup error', err);
           return;
         }
 
         addToast({
           type: 'error',
-          title: 'Erro no cadastro',
-          description: 'Ocorreu um erro ao fazer cadastro, tente novamente.',
+          title: 'Registration error',
+          description: 'An error occurred while registering, please try again.',
         });
       }
     },
@@ -65,13 +63,13 @@ const SignUp: React.FC<RegisterPropsData> = ({ showSession }) => {
       <Form
         onSubmit={handleSubmit}
         schema={schema}
-        id="register-form"
+        id="signup-form"
         autoComplete="off"
       >
-        <InputDefault label="Nome" icon="user-male" name="name" />
+        <InputDefault label="Name" icon="user-male" name="name" />
         <InputDefault label="Email" icon="email" name="email" />
         <InputDefault
-          label="Senha"
+          label="Password"
           icon="password--v1"
           name="password"
           isPassword
@@ -80,13 +78,13 @@ const SignUp: React.FC<RegisterPropsData> = ({ showSession }) => {
 
       <div className="login-footer">
         <div className="login-footer__login-button">
-          <button form="register-form" type="submit">
-            Criar conta
+          <button form="signup-form" type="submit">
+            Create account
           </button>
         </div>
-        <span>Ja tem uma conta?</span>
+        <span>Do you already have an account?</span>
         <button type="submit" onClick={() => history.push('/login')}>
-          Entrar
+          Login
         </button>
       </div>
     </Content>

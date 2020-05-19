@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Form } from '@rocketseat/unform';
 
 import { useAuth } from '../../hooks/auth';
@@ -12,9 +12,9 @@ import Logo from '../../assets/images/bitcoin-logo.png';
 
 const schema = Yup.object().shape({
   email: Yup.string()
-    .email('Insira um email válido!')
-    .required('O email é obrigatório'),
-  password: Yup.string().required('A senha é obrigatória'),
+    .email('Enter a valid email!')
+    .required('Email is required'),
+  password: Yup.string().required('Password is require'),
 });
 
 interface LoginPropsData {
@@ -42,15 +42,13 @@ const Login: React.FC<LoginPropsData> = ({ showSession }) => {
         history.push('/dashboard');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
-          console.log('YUP error', err);
-
           return;
         }
 
         addToast({
           type: 'error',
-          title: 'Erro na autenticação',
-          description: 'Ocorreu um erro ao fazer login, cheque as credenciais.',
+          title: 'Authentication error',
+          description: 'There was an error signing in, check credentials',
         });
       }
     },
@@ -70,9 +68,9 @@ const Login: React.FC<LoginPropsData> = ({ showSession }) => {
         id="login-form"
         autoComplete="off"
       >
-        <InputDefault label="Usuário" icon="user-male" name="email" />
+        <InputDefault label="User" icon="user-male" name="email" />
         <InputDefault
-          label="Senha"
+          label="Password"
           icon="password--v1"
           name="password"
           isPassword
@@ -82,15 +80,13 @@ const Login: React.FC<LoginPropsData> = ({ showSession }) => {
       <div className="login-footer">
         <div className="login-footer__login-button">
           <button form="login-form" type="submit">
-            Entrar
+            Login
           </button>
         </div>
-        <span>Ainda não tem conta?</span>
+        <span>Don't have an account?</span>
         <button type="submit" onClick={() => history.push('/signup')}>
-          {/* <button type="submit" onClick={() => handleShow('showRegister')}> */}
-          Cadastre-se!
+          Sign up!
         </button>
-        {/* <a onClick={() => handleShow('showRegister')}>Cadastre-se!</a> */}
       </div>
     </Content>
   );

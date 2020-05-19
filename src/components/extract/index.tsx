@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux';
 import { useTransition } from 'react-spring';
 
 import ExtractItem from './extractItem';
 import { ApplicationState } from '../../store';
 import { extractLoadRequest } from '../../store/ducks/extract/actions';
-import { Extract } from '../../store/ducks/extract/types';
 import { Container, List } from './styles';
 
 const ExtractList: React.FC = () => {
@@ -29,6 +28,7 @@ const ExtractList: React.FC = () => {
   return (
     <Container>
       <List>
+        {!data.length && <span>You don't have any transactions yet!</span>}
         {messagesWithTransitions.map(({ item, key, props }) => (
           <ExtractItem
             key={key}

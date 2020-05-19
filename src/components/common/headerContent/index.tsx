@@ -138,7 +138,7 @@ const Header: React.FC = () => {
         <DepositModalContent>
           <div className="modal-header">
             <strong>Deposit</strong>
-            <p>Insire um valor para o depósito</p>
+            <p>Enter a deposit amount</p>
           </div>
           <InputNumber
             name="deposit"

@@ -4,25 +4,18 @@ import React, {
   useState,
   useCallback,
 } from 'react';
-import { IconBaseProps } from 'react-icons';
+
+import { Container } from './styles';
 
 import brlIcon from '../../../assets/images/brl.png';
 
-import { Container, Error } from './styles';
-
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  icon?: React.ComponentType<IconBaseProps>;
   value: string;
   handleChange(value: string): void;
 }
 
-const Input: React.FC<InputProps> = ({
-  name,
-  icon: Icon,
-  value,
-  handleChange,
-}) => {
+const Input: React.FC<InputProps> = ({ name, value, handleChange }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -38,15 +31,14 @@ const Input: React.FC<InputProps> = ({
     setIsFilled(!!inputRef.current?.value);
   }, []);
 
-  const BRL = (int: string) => {
+  const BRL = useCallback((int: string) => {
     const k = int.replace(/[\D]+/g, '');
     let tmp = `${k}`;
     tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
     if (tmp.length > 6) tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
 
-    console.log('tmp', tmp);
     return tmp;
-  };
+  }, []);
 
   return (
     <Container isFilled={isFilled} isFocused={isFocused}>
@@ -60,12 +52,6 @@ const Input: React.FC<InputProps> = ({
         onChange={(e) => handleChange(BRL(e.target.value.toString()))}
         placeholder="00,00"
       />
-
-      {/* {error && (
-        <Error title={error}>
-          <FiAlertCircle color="#c53030" size={16} />
-        </Error>
-      )} */}
     </Container>
   );
 };

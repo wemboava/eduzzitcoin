@@ -15,17 +15,16 @@ export const Content = styled.div<LoginProps>`
 
   position: absolute;
   left: 0;
-  /* left: ${(props) => (props.showSession ? '0' : '-100%')}; */
-  transition: .5s ease;
-  transition-delay: .1s;
+  transition: 0.5s ease;
+  transition-delay: 0.1s;
   visibility: ${(props) => (props.showSession ? 'visible' : 'hidden')};
   opacity: ${(props) => (props.showSession ? '1' : '0')};
 
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     width: 40%;
     max-width: 450px;
     min-width: 350px;
-    background-color: #0E0E0E;
+    background-color: #eef4fb;
     box-shadow: -3px 0px 13px 1px rgba(0, 0, 0, 0.15);
     left: auto;
     right: ${(props) => (props.showSession ? '0' : '-50%')};
@@ -35,17 +34,20 @@ export const Content = styled.div<LoginProps>`
     justify-content: center;
     align-items: center;
     img {
-      width: 90px;
+      width: 80px;
       margin-left: -20px;
+      @media (min-width: 768px) {
+        width: 90px;
+      }
     }
     span {
       font-family: 'Ubuntu', sans-serif;
-      font-size: 48px;
-      color: #FFF;
+      font-size: 40px;
+      color: #1b1b1b;
+      @media (min-width: 768px) {
+        font-size: 48px;
+      }
     }
-  }
-  form {
-    /* margin-top: 150px; */
   }
 
   .login-footer {
@@ -53,7 +55,7 @@ export const Content = styled.div<LoginProps>`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: #DDD;
+    color: #1b1b1b;
     &__login-button {
       display: flex;
       justify-content: center;
@@ -71,19 +73,19 @@ export const Content = styled.div<LoginProps>`
         cursor: pointer;
         font-weight: bold;
         outline: none;
-        box-shadow: 0 10px 20px 0 rgba(0,0,0,.15);
-        transition: .8s cubic-bezier(.2,1,.2,1);
-        /* background: #00AEEF; */
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
+        transition: 0.8s cubic-bezier(0.2, 1, 0.2, 1);
         background: #f79318;
       }
-      & > button:active, & > button:hover{
-        /* background-color: #0081C8; */
+      & > button:active,
+      & > button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 30px 0 rgba(0,0,0,.25);
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.25);
       }
     }
 
-    & span {}
+    & span {
+    }
     & > button {
       color: #f79318;
       border: none;

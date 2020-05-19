@@ -5,12 +5,9 @@ import * as am4charts from '@amcharts/amcharts4/charts';
 // eslint-disable-next-line @typescript-eslint/camelcase
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 // eslint-disable-next-line @typescript-eslint/camelcase
-import am4themes_frozen from '@amcharts/amcharts4/themes/frozen';
 
 import { History } from '../../../store/ducks/history/types';
-// import dataHistory from './data.json';
 
-// am4core.useTheme(am4themes_frozen);
 am4core.useTheme(am4themes_animated);
 
 interface ChartData {
@@ -26,17 +23,6 @@ interface PropsData {
 }
 
 const Chart: React.FC<PropsData> = ({ data, dataTarget, chartColor }) => {
-  function generateChartData(chartData: ChartData[]) {
-    const newChartData = chartData.map((item: ChartData) => {
-      return {
-        buy: item.buy.toLocaleString(),
-        sell: item.sell.toLocaleString(),
-        createdAt: new Date(item.createdAt),
-      };
-    });
-    return newChartData;
-  }
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function am4themesMyTheme(target: any) {
     if (target instanceof am4core.ColorSet) {

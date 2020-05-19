@@ -11,13 +11,7 @@ const icons = {
   investment: <BsArrowUpDown size={30} />,
 };
 
-const ExtractItem: React.FC<Extract> = ({
-  id,
-  type,
-  value,
-  createdAt,
-  style,
-}) => {
+const ExtractItem: React.FC<Extract> = ({ type, value, createdAt, style }) => {
   return (
     <Container type={type} style={style}>
       <div className="wrapper">

@@ -1,13 +1,10 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import { useTransition } from 'react-spring';
+import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 
 import LoginContent from '../../components/login';
 import RegisterContent from '../../components/signup';
 
 import { Container, Content } from './styles';
-
-// import { Loader } from '../../components/common';
 
 interface SessionData {
   showLogin?: boolean;
@@ -35,24 +32,12 @@ const Login: React.FC = () => {
     });
   }, [path]);
 
-  const handleShow = useCallback((nextSession: string) => {
-    setOptions({
-      showLogin: false,
-      showRegister: false,
-    });
-
-    setTimeout(() => {
-      setOptions((state) => ({ ...state, [nextSession]: true }));
-    }, 400);
-  }, []);
-
   return (
     <Container>
       <Content>
         <LoginContent showSession={!!options.showLogin} />
         <RegisterContent showSession={!!options.showRegister} />
       </Content>
-      {/* <Loader isActivity={isLoading} /> */}
     </Container>
   );
 };

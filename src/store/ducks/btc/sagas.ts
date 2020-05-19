@@ -76,11 +76,12 @@ export function* purchaseBtc(action: ReturnType<typeof purchaseRequest>) {
       }),
     );
   } catch (err) {
+    const response = JSON.parse(err.request.response);
     yield put(purchaseFailure());
     yield put(
       openSuccessModal({
         opened: true,
-        message: 'We had a problem, try again!',
+        message: response.message,
         isError: true,
       }),
     );
@@ -116,11 +117,12 @@ export function* sellBtc(action: ReturnType<typeof sellRequest>) {
       }),
     );
   } catch (err) {
+    const response = JSON.parse(err.request.response);
     yield put(sellFailure());
     yield put(
       openSuccessModal({
         opened: true,
-        message: 'We had a problem, try again!',
+        message: response.message,
         isError: true,
       }),
     );

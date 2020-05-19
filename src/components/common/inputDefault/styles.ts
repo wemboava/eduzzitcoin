@@ -8,6 +8,7 @@ export const InputWrapper = styled.div<InputProps>`
   .input-group {
     margin-bottom: ${(props) => (props.isLastField ? '0' : '35px')};
     position: relative;
+    background-color: #eef4fb;
 
     & span {
       position: absolute;
@@ -37,9 +38,9 @@ export const InputWrapper = styled.div<InputProps>`
     padding: 1.2em 1.2em 1.2em 2.5em;
     font-size: 16px;
     box-sizing: border-box;
-    background: none;
+    background-color: #eef4fb;
     outline: none;
-    color: #ddd;
+    color: #1b1b1b;
     transition: all 0.2s ease-in;
   }
 

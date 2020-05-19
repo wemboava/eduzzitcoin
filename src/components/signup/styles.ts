@@ -15,17 +15,17 @@ export const Content = styled.div<RegisterProps>`
 
   position: absolute;
   left: 0;
-  /* left: ${(props) => (props.showSession ? '0' : '-100%')}; */
-  transition: .5s ease;
-  transition-delay: .1s;
+  transition: 0.5s ease;
+  transition-delay: 0.1s;
 
   visibility: ${(props) => (props.showSession ? 'visible' : 'hidden')};
   opacity: ${(props) => (props.showSession ? '1' : '0')};
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     width: 40%;
     max-width: 450px;
     min-width: 350px;
-    background-color: #0E0E0E;
+    padding: 80px 35px 35px 35px;
+    background-color: #eef4fb;
     box-shadow: -3px 0px 13px 1px rgba(0, 0, 0, 0.15);
     left: auto;
     right: ${(props) => (props.showSession ? '0' : '-50%')};
@@ -42,11 +42,8 @@ export const Content = styled.div<RegisterProps>`
     span {
       font-family: 'Ubuntu', sans-serif;
       font-size: 48px;
-      color: #FFF;
+      color: #1b1b1b;
     }
-  }
-  form {
-    /* margin-top: 150px; */
   }
 
   .login-footer {
@@ -72,20 +69,21 @@ export const Content = styled.div<RegisterProps>`
         cursor: pointer;
         font-weight: bold;
         outline: none;
-        box-shadow: 0 10px 20px 0 rgba(0,0,0,.15);
-        transition: .8s cubic-bezier(.2,1,.2,1);
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
+        transition: 0.8s cubic-bezier(0.2, 1, 0.2, 1);
         /* background: #00AEEF; */
         background: #f79318;
       }
-      & > button:active, & > button:hover{
+      & > button:active,
+      & > button:hover {
         /* background-color: #0081C8; */
         transform: translateY(-2px);
-        box-shadow: 0 10px 30px 0 rgba(0,0,0,.25);
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.25);
       }
     }
 
     & span {
-      color: #FFF;
+      color: #1b1b1b;
     }
     & > button {
       color: #f79318;

@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Lato:200,300,400,700&display=swap');
-
   * {
     margin: 0;
     padding: 0;
@@ -66,16 +64,16 @@ export default createGlobalStyle`
 
     @keyframes autofill {
       100% {
-        background: #0E0E0E;
-        color: #ddd;
+        background: #EEF4FB;
+        color: #1b1b1b;
         font-size: 15px;
       }
     }
 
     @-webkit-keyframes autofill {
       100% {
-        background: #0E0E0E;
-        color: #ddd;
+        background: #EEF4FB;
+        color: #1b1b1b;
         font-size: 15px;
       }
     }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { IconBaseProps } from 'react-icons';
 
 import { Button } from './styles';
 
