@@ -7,22 +7,22 @@ interface ButtonProps {
 }
 
 const appearFromLeft = keyframes`
-  from{
+  from {
     opacity: 0;
     transform: translateX(-50px);
   }
-  to{
+  to {
     opacity: 1;
     transform: translateX(0px);
   }
 `;
 
 const appearFromRight = keyframes`
-  from{
+  from {
     opacity: 0;
     transform: translateX(50px);
   }
-  to{
+  to {
     opacity: 1;
     transform: translateX(0px);
   }
